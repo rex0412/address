@@ -30,14 +30,6 @@ public class MainController {
 		return "Saved";
 	}
 
-	@DeleteMapping(path="/user")
-	public @ResponseBody String deleteUser (@RequestParam Integer id) {
-		User n = new User();
-		n.setId(id);
-		userRepository.delete(n);
-		return "delete";
-	}
-
 	@GetMapping(path="/users")
 	public @ResponseBody Iterable<User> getAllUsers() {
 		// This returns a JSON or XML with the users
@@ -52,5 +44,13 @@ public class MainController {
 		n.setEmail(email);
 		userRepository.save(n);
 		return "updated";
+	}
+
+	@DeleteMapping(path="/user")
+	public @ResponseBody String deleteUser (@RequestParam Integer id) {
+		User n = new User();
+		n.setId(id);
+		userRepository.delete(n);
+		return "delete";
 	}
 }
